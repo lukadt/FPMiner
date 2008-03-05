@@ -1,0 +1,65 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D684D62A-3EB1-4EA9-AA09-0A4E09B12872}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FrequentPatternMining.ConsoleTest</RootNamespace>
+    <AssemblyName>FrequentPatternMining.ConsoleTest</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FrequentPatternMining.AprioriOpt\FrequentPatternMining.AprioriOpt.csproj">
+      <Project>{083E02D8-FF68-48F6-B2C1-516774DAE32F}</Project>
+      <Name>FrequentPatternMining.AprioriOpt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrequentPatternMining.Entities\FrequentPatternMining.Entities.csproj">
+      <Project>{52DEB1AE-B123-47EB-BCA7-94EACDBB73BD}</Project>
+      <Name>FrequentPatternMining.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrequentPatternMining.FPGrowth\FrequentPatternMining.FPGrowth.csproj">
+      <Project>{A3A985F6-3537-4A5E-808F-D30F0322D2F6}</Project>
+      <Name>FrequentPatternMining.FPGrowth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrequentPatternMining.IFrequentMining\FrequentPatternMining.IFrequentMining.csproj">
+      <Project>{D74BFDD8-4E59-4E8F-8BD0-E7B494E28C50}</Project>
+      <Name>FrequentPatternMining.IFrequentMining</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
