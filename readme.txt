@@ -1,0 +1,2 @@
+After compiling the solution, a bin directory will be created for you with the needed structure.To execute the program you only have to edit the FrequentPatternMining.Presentation.WinForm.exe.config
+in the created bin folder to choose the data access layer and specify the location of input dataset. You can fing for example dataset file on fimi datasets--> http://fimi.cs.helsinki.fi/data/
