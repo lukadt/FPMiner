@@ -1,0 +1,126 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5BC04859-B43E-49A5-AF3B-440791D53443}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FrequentPatternMining.Presentation.WinForm</RootNamespace>
+    <AssemblyName>FrequentPatternMining.Presentation.WinForm</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutUs.Designer.cs">
+      <DependentUpon>AboutUs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridViewPrinter.cs" />
+    <Compile Include="FrequentPatternGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrequentPatternGUI.Designer.cs">
+      <DependentUpon>FrequentPatternGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HashTableXmlSerializer.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutUs.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutUs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrequentPatternGUI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrequentPatternGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FrequentPatternMining.BusinessLogic\FrequentPatternMining.BusinessLogic.csproj">
+      <Project>{114DAF41-8FC1-48DE-A651-A778A564A9F0}</Project>
+      <Name>FrequentPatternMining.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrequentPatternMining.Entities\FrequentPatternMining.Entities.csproj">
+      <Project>{52DEB1AE-B123-47EB-BCA7-94EACDBB73BD}</Project>
+      <Name>FrequentPatternMining.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrequentPatternMining.IFrequentMining\FrequentPatternMining.IFrequentMining.csproj">
+      <Project>{D74BFDD8-4E59-4E8F-8BD0-E7B494E28C50}</Project>
+      <Name>FrequentPatternMining.IFrequentMining</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>del /Q "$(SolutionDir)bin\Algorithms\*.*"
+rmdir /Q "$(SolutionDir)bin\Algorithms"
+del /Q "$(SolutionDir)bin\*.*"
+rmdir /Q "$(SolutionDir)bin"
+mkdir "$(SolutionDir)bin"
+mkdir "$(SolutionDir)bin\Algorithms"
+copy "$(TargetPath)" "$(SolutionDir)bin"
+copy "$(TargetDir)FrequentPatternMining.Presentation.WinForm.exe.config" "$(SolutionDir)bin"
+copy "$(SolutionDir)FrequentPatternMining.BusinessLogic\bin\release\FrequentPatternMining.BusinessLogic.dll" "$(SolutionDir)bin"
+copy "$(SolutionDir)FrequentPatternMining.DAL\bin\release\FrequentPatternMining.DAL.dll" "$(SolutionDir)bin"
+copy "$(SolutionDir)FrequentPatternMining.Entities\bin\release\FrequentPatternMining.Entities.dll" "$(SolutionDir)bin"
+copy "$(SolutionDir)FrequentPatternMining.IFrequentMining\bin\release\FrequentPatternMining.IFrequentMining.dll" "$(SolutionDir)bin"
+copy "$(SolutionDir)FrequentPatternMining.FPgrowth\bin\release\FrequentPatternMining.FPgrowth.dll" "$(SolutionDir)bin\Algorithms"
+copy "$(SolutionDir)FrequentPatternMining.Apriori\bin\release\FrequentPatternMining.Apriori.dll" "$(SolutionDir)bin\Algorithms"
+copy "$(SolutionDir)FrequentPatternMining.AprioriOpt\bin\release\FrequentPatternMining.AprioriOpt.dll" "$(SolutionDir)bin\Algorithms"
+copy "$(SolutionDir)FrequentPatternMining.DAL.FlatFile\bin\release\FrequentPatternMining.DAL.FlatFile.dll" "$(SolutionDir)bin"
+copy "$(SolutionDir)FrequentPatternMining.DAL.FlatFileSingleLine\bin\release\FrequentPatternMining.DAL.FlatFileSingleLine.dll" "$(SolutionDir)bin"
+copy "$(SolutionDir)FrequentPatternMining.DAL.SqlServer\bin\release\FrequentPatternMining.DAL.SqlServer.dll" "$(SolutionDir)bin"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
